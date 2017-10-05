@@ -1,0 +1,204 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+@{
+    ViewBag.Title = "Modelo";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+@section footer{
+    <script>
+        DCG.Modelo.Init();
+    </script>
+}
+<div class="row" id="Modelo" data-url-register="@Url.Action("Registrar", "Modelo")" data-url-delete="@Url.Action("Delete", "Modelo")">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-left">
+                            <h4 class="card-title">Modelo</h4>
+                            <p class="category">Lista de todas las modelos registradas</p>
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn btn-primary" name="btnNuevo">Agregar nuevo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-green dataTable table-condensed" id="tbModelo">
+                        <thead>
+                            <tr>
+                                <th class="model"><a class="onload" href="@Url.Action("listar", "Modelo")" root=" data" data-params="nombre:,rol:"></a></th>
+                                <th></th>
+                                <th>Modelo</th>
+                               
+                              
+                                <th>Stock</th>
+                                <th>Margen de precio %</th>
+                                <th>Linea</th>
+                                <th>Marca</th>
+                                <th>Maneja barcode</th>
+                                <th>Imagen</th>
+                                <th>Categoría</th>
+                                <th>Fecha de registro</th>
+                            </tr>
+                        </thead>
+                        <tfoot></tfoot>
+                        <tbody>
+                            <tr class="model">
+                                <td style="width: 100px; text-align:center">
+                                    <a class="select">
+                                        <i class="ti-pencil"></i>
+                                    </a>
+                                    &nbsp;&nbsp;
+                                    <a class="delete">
+                                        <i class="ti-trash"></i>
+                                    </a>
+                                </td>
+                                <td class="modelo" />
+
+                               
+                                <td class="sctock" />
+                                <td class="margen" />
+                                <td class="linea" />
+                                <td class="marca" />
+                                <td class="mb" />
+                                <td class="img" />
+                                <td class="categoria" />
+                                <td class="fecha" />
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="modal fade" id="dlgModelo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Agregar/Actualizar modelo</h4>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>Seleccione categoría</label>
+                                <select class="form-control" name="id_categoria" required>
+                                    <option value="">- Seleccione categoría -</option>
+                                    @foreach (var item in NEGOCIO.CategoriaCN.Instancia.listar(""))
+                                    {
+                                        <option value="@item.CATEI_CODIGO">@item.CATEV_CATEGORIA</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Seleccione marca</label>
+                                <select class="form-control" name="id_marca" required>
+                                    <option value="">- Seleccione marca -</option>
+                                    @foreach (var item in NEGOCIO.MarcaCN.Instancia.listar("")) { 
+                                       <option value="@item.MARCI_CODIGO">@item.MARCV_MARCA</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+
+                            <div class="col-md-6">
+                                <label>Seleccione Linea</label>
+                                <select class="form-control" name="id_linea" required>
+                                    <option value="">- Seleccione linea -</option>
+                                    @foreach (var item in NEGOCIO.LineaCN.Instancia.listar(""))
+                                    {
+                                        <option value="@item.LINEI_CODIGO">@item.LINEV_LINEA</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Ingrese modelo</label>
+                                <input type="text" name="modelo" value="" class="form-control" required />
+                            </div>
+                           
+                        </div>
+                       
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>Ingrese procedencia</label>
+                                <input type="text" name="procedencia" value="" class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label>Ingrese detalle</label>
+                                <textarea name="detalle" class="form-control" required></textarea>
+                            </div>
+                           
+                        </div>
+                       
+                    
+
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>Ingrese color</label>
+                                <input type="text" name="color" value="" class="form-control" required />
+                            </div>
+                            <div class="col-md-6" style="display:none">
+                                <label>Ingrese detalle</label>
+                                <textarea name="descripcion" class="form-control"></textarea> 
+                            </div>
+                            <div class="col-md-6">
+                                <label>Ingrese margen de precio %</label>
+                                <input type="text" name="margen" value="" class="form-control" required numeroint maxlength="2"/>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                           
+                            <div class="col-md-4">
+                                <label>¿Maneja barcode?</label>
+                                <select class="form-control" name="mb" required>
+                                    <option value="1">Sí</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="col-md-8">
+                                <label>Imagen</label>
+                                <input type="file" name="img_tmp" class="form-control" />
+                                <input type="hidden" name="img" value="" />
+                            </div>
+                        </div>
+                      
+
+                        <input type="hidden" name="id" value="0" />
+                    </form>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" name="btnCancelar" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" name="btnRegistrar">Registrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+

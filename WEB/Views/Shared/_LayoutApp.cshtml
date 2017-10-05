@@ -1,0 +1,333 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>@ViewBag.Title</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!--  Fonts and icons     -->
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/cssApp")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("header", required: false)
+</head>
+<body>
+    <div class="loader" style="display:none">
+        <div class="loading5">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar" data-background-color="white" data-active-color="danger">
+            <div class="sidebar-wrapper">
+                <div class="logo text-center">
+                    <a href="@Url.Action("Index","App")" class="simple-text logo-normal">
+
+                        <img src="~/images/dcgteclogotipo.png" width="250px;" height="80px" />
+                    </a>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+                <div class="logo text-center">
+                        <div style="width:100%; text-align:center">
+                           
+                            <div style="width:100%;padding-left:80px; padding-right:80px; text-align:center">
+                                <img src="~/images/user.png" width="80px;" height="80px" />
+                            </div>
+                        </div>
+                    <br />
+                    <label>User</label>
+                 
+                </div>
+
+                <ul class="nav">
+                    <li class="@(ViewBag.Title == "Dashboard" ? "active" : "")">
+                        <a href="@Url.Action("Index", "Home")">
+                            <i class="ti-panel"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a data-toggle="collapse" href="#formsExamples">
+                            <i class="ti-truck"></i>
+                            <p>
+                                Almacen
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="formsExamples">
+                            <ul class="nav">
+                                <li class="@(ViewBag.Title == "Marca" ? "active" : "")">
+                                    <a href="@Url.Action("Mensaje","Administrador")">
+                                        <i class="ti-angle-double-right"></i>
+                                        <span class="sidebar-normal">Marca</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Modelo", "Administrador")">
+                                        <i class="ti-angle-double-right"></i>
+                                        <span class="sidebar-normal">Modelo</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Linea", "Administrador")">
+                                        <i class="ti-angle-double-right"></i>
+                                        <span class="sidebar-normal">Linea</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a data-toggle="collapse" href="#operaciones">
+                            <i class="ti-harddrives"></i>
+                            <p>
+                                Operaciones
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="operaciones">
+                            <ul class="nav">
+                                <li class="@(ViewBag.Title == "Marca" ? "active" : "")">
+                                    <a href="@Url.Action("Compra","Administrador")">
+                                        <i class="ti-angle-double-right"></i>
+                                        <span class="sidebar-normal">Compra</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Venta", "Administrador")">
+                                        <i class="ti-angle-double-right"></i>
+                                        <span class="sidebar-normal">Venta</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="@(ViewBag.Title == "Persona" ? "active" : "")">
+                        <a href="@Url.Action("Persona", "Administrador")">
+                            <i class="ti-user"></i>
+                            <p>Persona</p>
+                        </a>
+                    </li>
+                    <hr />
+                    <li>
+                        <a data-toggle="collapse" href="#reportes">
+                            <i class="ti-harddrives"></i>
+                            <p>
+                                Reportes
+                                <b class="caret"></b>
+                            </p>
+                        </a>
+                        <div class="collapse" id="reportes">
+                            <ul class="nav">
+                                <li class="@(ViewBag.Title == "Marca" ? "active" : "")">
+                                    <a href="@Url.Action("REP_Producto","Administrador")">
+                                        <i class="ti-angle-double-right"></i>
+                                        <span class="sidebar-normal">Productos</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("REP_venta", "Administrador")">
+                                        <i class="ti-angle-double-right"></i>
+                                        <span class="sidebar-normal">Venta</span>
+                                    </a>
+                                </li>
+                                <li class="@(ViewBag.Title == "Marca" ? "active" : "")">
+                                    <a href="@Url.Action("REP_Compra","Administrador")">
+                                        <i class="ti-angle-double-right"></i>
+                                        <span class="sidebar-normal">Compra</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar bar1"></span>
+                            <span class="icon-bar bar2"></span>
+                            <span class="icon-bar bar3"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">@ViewBag.Title</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="ti-user"></i>
+                                    <p>@Session["usuarioPerfil"]</p>
+                                    <p> @User.Identity.Name </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="logout_open btn-cerrar-sesion">
+                                    <i class="ti-power-off"></i>
+                                    <p>Salir</p>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <div class="icon-big icon-warning text-center">
+                                                <i class="ti-server"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <div class="numbers">
+                                                <p>Capacity</p>
+                                                105GB
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <hr>
+                                        <div class="stats">
+                                            <i class="ti-reload"></i> Updated now
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <div class="icon-big icon-success text-center">
+                                                <i class="ti-wallet"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <div class="numbers">
+                                                <p>Revenue</p>
+                                                $1,345
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <hr>
+                                        <div class="stats">
+                                            <i class="ti-calendar"></i> Last day
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <div class="icon-big icon-danger text-center">
+                                                <i class="ti-pulse"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <div class="numbers">
+                                                <p>Errors</p>
+                                                23
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <hr>
+                                        <div class="stats">
+                                            <i class="ti-timer"></i> In the last hour
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-xs-5">
+                                            <div class="icon-big icon-info text-center">
+                                                <i class="ti-twitter-alt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <div class="numbers">
+                                                <p>Followers</p>
+                                                +45
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <hr>
+                                        <div class="stats">
+                                            <i class="ti-reload"></i> Updated now
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="copyright pull-right">
+                        &copy;
+                        <script>document.write(new Date().getFullYear())</script>, Todos los derechos reservados  por <a href="http://www.soft-one.org">Soft One</a>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @style = "display:none" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+</body>
+@Scripts.Render("~/bundles/jsApp")
+<script src="~/Dist/Generics/js/ajax.js"></script>
+<script src="~/Dist/Generics/js/simpledataTable.js"></script>
+@RenderSection("footer", required: false)
+
+</html>

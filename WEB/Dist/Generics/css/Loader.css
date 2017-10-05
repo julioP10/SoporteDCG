@@ -1,0 +1,235 @@
+﻿.loading5,
+.loading5 i {
+    width: 40px;
+    height: 40px
+}
+.loading5 {
+    transform: rotate(45deg);
+    animation: loading5-ani1 3s ease-in-out infinite;
+    top: 40%;
+    position: relative;
+    margin: auto
+}
+
+.loading5 i {
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute
+}
+
+.loading5 i:nth-child(1) {
+    background: #f28f16;
+    transform: translate(0, 50px);
+    animation: loading5-ani2 3s ease-in-out infinite
+}
+
+.loading5 i:nth-child(2) {
+    background: #1d6373;
+    transform: rotate(90deg) translate(0, 50px);
+    animation: loading5-ani3 3s ease-in-out infinite
+}
+
+.loading5 i:nth-child(3) {
+    background: #f26d00;
+    transform: rotate(180deg) translate(0, 50px);
+    animation: loading5-ani4 3s ease-in-out infinite
+}
+
+.loading5 i:nth-child(4) {
+    background: #37a8af;
+    transform: rotate(270deg) translate(0, 50px);
+    animation: loading5-ani5 3s ease-in-out infinite
+}
+
+@-webkit-keyframes loading5-ani1 {
+    25% {
+        transform: rotate(135deg)
+    }
+    50% {
+        transform: rotate(225deg)
+    }
+    75% {
+        transform: rotate(315deg)
+    }
+    100% {
+        transform: rotate(405deg)
+    }
+}
+
+@keyframes loading5-ani1 {
+    25% {
+        transform: rotate(135deg)
+    }
+    50% {
+        transform: rotate(225deg)
+    }
+    75% {
+        transform: rotate(315deg)
+    }
+    100% {
+        transform: rotate(405deg)
+    }
+}
+
+@-webkit-keyframes loading5-ani2 {
+    100%,
+    17.5%,
+    25%,
+    42.5%,
+    50%,
+    67.5%,
+    75%,
+    92.5% {
+        transform: translate(0, 50px)
+    }
+    12.5%,
+    37.5%,
+    62.5%,
+    87.5% {
+        transform: translate(0, 35px)
+    }
+}
+
+@keyframes loading5-ani2 {
+    100%,
+    17.5%,
+    25%,
+    42.5%,
+    50%,
+    67.5%,
+    75%,
+    92.5% {
+        transform: translate(0, 50px)
+    }
+    12.5%,
+    37.5%,
+    62.5%,
+    87.5% {
+        transform: translate(0, 35px)
+    }
+}
+
+@-webkit-keyframes loading5-ani3 {
+    100%,
+    17.5%,
+    25%,
+    42.5%,
+    50%,
+    67.5%,
+    75%,
+    92.5% {
+        transform: rotate(90deg) translate(0, 50px)
+    }
+    12.5%,
+    37.5%,
+    62.5%,
+    87.5% {
+        transform: rotate(90deg) translate(0, 35px)
+    }
+}
+
+@keyframes loading5-ani3 {
+    100%,
+    17.5%,
+    25%,
+    42.5%,
+    50%,
+    67.5%,
+    75%,
+    92.5% {
+        transform: rotate(90deg) translate(0, 50px)
+    }
+    12.5%,
+    37.5%,
+    62.5%,
+    87.5% {
+        transform: rotate(90deg) translate(0, 35px)
+    }
+}
+
+@-webkit-keyframes loading5-ani4 {
+    100%,
+    17.5%,
+    25%,
+    42.5%,
+    50%,
+    67.5%,
+    75%,
+    92.5% {
+        transform: rotate(180deg) translate(0, 50px)
+    }
+    12.5%,
+    37.5%,
+    62.5%,
+    87.5% {
+        transform: rotate(180deg) translate(0, 35px)
+    }
+}
+
+@keyframes loading5-ani4 {
+    100%,
+    17.5%,
+    25%,
+    42.5%,
+    50%,
+    67.5%,
+    75%,
+    92.5% {
+        transform: rotate(180deg) translate(0, 50px)
+    }
+    12.5%,
+    37.5%,
+    62.5%,
+    87.5% {
+        transform: rotate(180deg) translate(0, 35px)
+    }
+}
+
+@-webkit-keyframes loading5-ani5 {
+    100%,
+    17.5%,
+    25%,
+    42.5%,
+    50%,
+    67.5%,
+    75%,
+    92.5% {
+        transform: rotate(270deg) translate(0, 50px)
+    }
+    12.5%,
+    37.5%,
+    62.5%,
+    87.5% {
+        transform: rotate(270deg) translate(0, 35px)
+    }
+}
+
+@keyframes loading5-ani5 {
+    100%,
+    17.5%,
+    25%,
+    42.5%,
+    50%,
+    67.5%,
+    75%,
+    92.5% {
+        transform: rotate(270deg) translate(0, 50px)
+    }
+    12.5%,
+    37.5%,
+    62.5%,
+    87.5% {
+        transform: rotate(270deg) translate(0, 35px)
+    }
+}
+
+.loader {
+    width: 100%;
+    position: fixed;
+    z-index: 100000;
+    height: 100%;
+    background: rgba(255, 255, 255, .8);
+    top: 0;
+    left: 0
+}
+

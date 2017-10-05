@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Reporte de compra";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+@section footer{
+    <script>
+        DCG.rpt_compra.Init();
+    </script>
+}
+<div class="row" id="rpt_compra">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-left">
+                            <h4 class="card-title">Reporte de Compra</h4>
+                            <p class="category"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-green dataTable table-condensed" id="tb_rpt_compra">
+                        <thead>
+                            <tr>
+                                <th class="model"><a class="onload" href="@Url.Action("COMPRA_listar", "Reporte")" root=" data" data-params="nombre:,rol:"></a></th>
+                                <th>Número Doc.</th>
+                                <th>Cliente</th>
+                                <th>RUC</th>
+                                <th>Documento</th>
+                                <th>Moneda</th>
+                                <th>Estado</th>
+                                <th>Importe</th>
+                                <th>Tipo Transacción</th>
+                                <th>Cantidad Item</th>
+                                <th>Fecha</th>
+                                <th>Ver items</th>
+                            </tr>
+                        </thead>
+                        <tfoot></tfoot>
+                        <tbody>
+                            <tr class="model">
+                                <td class="num_doc" />
+                                <td class="razon" />
+                                <td class="ruc" />
+                                <td class="tipo_doc" />
+                                <td class="moneda" />
+                                <td class="doc_estado" />
+                                <td class="importe" />
+                                <td class="tipo_transac" />
+                                <td class="detalle" />
+                                <td class="fecha" />
+                                <td>
+                                    <a class="vc_detalle ti-list-ol" style="font-size: 35px;"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="dlgcompraDetalle" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">Detalle de la compra</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table shownumberrows class="table table-striped table-bordered table-hover table-green dataTable table-condensed" id="tbcompraDetalle">
+                            <thead>
+                                <tr>
+                                    <th class="model"><a class="onload" href="@Url.Action("COMPRA_DETALLE_listar", "Reporte")" root="data" data-params="nombre:,rol:"></a></th>
+
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Total</th>
+                                    <th>Barcode/Serie</th>
+                                </tr>
+                            </thead>
+                            <tfoot></tfoot>
+                            <tbody>
+                                <tr class="model">
+                                    <td class="detalle" />
+                                    <td class="cantidad" />
+                                    <td class="precio" />
+                                    <td class="total" />
+                                    <td class="series" />
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,846 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Custom a Transportation Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <!-- custom-theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Custom Transportation Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <script src="~/Dist/Generics/js/modernizr-2.6.2.js"></script>
+    <link href="~/Dist/Web/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Dist/Web/css/easy-responsive-tabs.css" rel="stylesheet" />
+    <link href="~/Dist/Web/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Dist/Web/css/lightbox.css" rel="stylesheet" />
+    <link href="~/Dist/Web/css/owl.theme.css" rel="stylesheet" />
+    <link href="~/Dist/Web/css/style.css" rel="stylesheet" />
+    <!-- //Custom Theme files -->
+    <!-- js -->
+    <script src="~/Dist/Generics/js/jquery-3.1.1.min.js"></script>
+   
+    <!-- web-fonts -->
+    <!-- //font-awesome-icons -->
+
+     <style>
+        .bt-login,.bt-login:hover, .bt-login:active, .bt-login:focus {
+    background-color: #ff8627;
+    color: #ffffff;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    transition: background-color 300ms linear 0s;
+}
+
+
+.login-tab {
+	margin: 0 auto;
+	max-width:455px
+}
+
+.login-modal-header {
+	background: #27ae60;
+	color: #fff;
+}
+
+.login-modal-header .modal-title {
+	color: #fff;
+}
+
+.login-modal-header .close {
+	color: #fff;
+}
+
+.login-modal i {
+	color: #000;
+}
+
+.login-modal form {
+	max-width: 340px;
+}
+
+.tab-pane form {
+	margin: 0 auto;
+}
+.login-modal-footer{
+	margin-top:15px;
+	margin-bottom:15px;
+}
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <div class="full-page login-page" data-color="" data-image="@Url.Content("~/Dist/App/Img/background-2.jpg")">
+        <div class="w3_navigation">
+            <div class="container">
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header navbar-left">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div style="text-align:center" class="w3_navigation_pos">
+
+                            <img src="~/images/dcgteclogotipo.png" width="250" height="80px" />
+                        </div>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                        <nav class="menu menu--miranda">
+                            <ul class="nav navbar-nav menu__list">
+                                <li class="menu__item menu__item--current"><a href="index.html" class="menu__link">INICIO</a></li>
+                                <li class="menu__item"><a href="#about" class="scroll menu__link">NOSOTROS</a></li>
+
+                                <li class="menu__item"><a href="#gallery" class="scroll menu__link">GALERIA</a></li>
+                                <li class="menu__item"><a href="#services" class="scroll menu__link">SERVICIO</a></li>
+                                <li class="menu__item"><a href="#contact" class="scroll menu__link">CONTACTENOS</a></li>
+                                @Html.Partial("_LoginPartial")
+
+                            </ul>
+                        </nav>
+                    </div>
+                </nav>
+            </div>
+            <br />
+            <br />
+        </div>
+        <!-- //header -->
+        <!-- banner -->
+        <div class="jarallax banner">
+            <div class="banner-pos banner1">
+                <div class="container">
+                    <div class="banner-info">
+                        <h2>GENERE SU <span>dcg-tec</span></h2> <h3>SOPORTE TECNICO</h3>
+                        <p>SOLUCIONES A TU DISPOSICION</p>
+                    </div>
+                </div>
+                <div class="login-form banner-posit">
+                    <h3>GENERE NUEVO TICKET</h3>
+                   @using (Html.BeginForm("Registrar", "Ticket", FormMethod.Post, new { id = "frm-adjuntar" }))
+                   {
+                       <input type="hidden" id="usuario" name="usuario" value="@User.Identity.Name" />
+                        <input type="text" name="ruc" placeholder="RUC" required="" />
+                        <input type="text" name="razon" placeholder="RAZON SOCIAL" required="" />
+                        <input type="email" name="correo" placeholder="CORREO" required="" />
+                        <input type="text" name="asunto" placeholder="ASUNTO" required="" />
+                        <h3 class="w3ls-h3">ASIGNADO A:</h3>
+
+                        <select name="rol" class="ship-sel">
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.Name">@item.Name</option>
+                            }
+                        </select>
+
+                        <h3 class="w3ls-h3">ADJUNTE SU TICKET:</h3>
+                        <label class="pull-left upload_btn btn btn-primary fa fa-cloud-upload" for="my-file-selector">
+                            <input id="my-file-selector" type="file" name="documento" style="display:none"
+                                   onchange="$('#upload-file-info').html(this.files[0].name)">
+                            Agregar archivo
+                        </label>
+                        <span class='label label-info' id="upload-file-info"></span>
+
+                        <div class="clearfix"></div>
+                        <br>
+                        <textarea style="height: 125px;" name="mensaje" placeholder="INGRSE SU MENSAJE AQUI!!!.."></textarea>
+                        <input type="submit" value="PROCEED TO PAY">
+                   }
+                </div>
+            </div>
+        </div>
+        <!-- banner -->
+        <div class="jarallax w3ls-section w3-NOSOTROS" id="NOSOTROS">
+            <div class="container">
+                <h3 class="agileits-title">NOSOTROS us</h3>
+                <div class="NOSOTROS-main">
+                    <div class="w3ls-about-left col-md-6">
+                        <img class="img-responsive" src="/images/bb.jpg" alt="about-image" />
+                    </div>
+                    <div class="w3ls-about-right col-md-6">
+                        <div class=" stats-info-right">
+                            <div class="stats-info-text">
+                                <h4>8</h4>
+                                <h5>AÑOS DE</h5>
+                                <p>EXCELENCIA</p>
+                            </div>
+                        </div>
+                        <div class="w3_agileits-ab-main">
+                            <h4>the ultimate transport</h4>
+                            <p class="about-text-w3l">Pellentesque accumsan cursus dui, sodales blandit urna sodal vitaepel ente sque accumsan cursus dui,sod les blandit urna urna sodales vitae Pellentesque accumsan cursus dui, sodales blan urna sodales vitae pellentesque accumsan cursus dui, sodales blan sodales vitae. Maece placerat eget mi vitae euismod.</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!-- banner-bottom -->
+        <div class="agileinfo-abt-btm w3ls-section">
+            <div class="container">
+                <h3 class="h3-w3l">Freight forwarding services by  <span> Logistics International</span></h3>
+                <h4 class="h3-w3l">Deliver the goods on time.</h4>
+            </div>
+        </div>
+
+        <!-- //Features -->
+        <!-- gallery -->
+        <div id="gallery" class="jarallax w3ls-section gallery">
+            <div class="container">
+                <div class="agileits-title">
+                    <h3 class="agileits-title">GALERIA</h3>
+                </div>
+                <div class="gallery-w3lsrow">
+                    <div class="col-sm-3 col-xs-4 gallery-grids">
+                        <div class="w3ls-hover">
+                            <a href="/images/g1.jpg" data-lightbox="example-set" data-title="Lorem Ipsum is simply dummy the when an unknown galley of type and scrambled it to make a type specimen.">
+                                <img src="/images/g1.jpg" class="img-responsive zoom-img" alt="" />
+                                <div class="view-caption">
+                                    <h5>Latest Gallery</h5>
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-4 gallery-grids">
+                        <div class="w3ls-hover">
+                            <a href="/images/g2.jpg" data-lightbox="example-set" data-title="Lorem Ipsum is simply dummy the when an unknown galley of type and scrambled it to make a type specimen.">
+                                <img src="/images/g2.jpg" class="img-responsive zoom-img" alt="" />
+                                <div class="view-caption">
+                                    <h5>Latest Gallery</h5>
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-4 gallery-grids">
+                        <div class="w3ls-hover">
+                            <a href="/images/g3.jpg" data-lightbox="example-set" data-title="Lorem Ipsum is simply dummy the when an unknown galley of type and scrambled it to make a type specimen.">
+                                <img src="/images/g3.jpg" class="img-responsive zoom-img" alt="" />
+                                <div class="view-caption">
+                                    <h5>Latest Gallery</h5>
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-4 gallery-grids">
+                        <div class="w3ls-hover">
+                            <a href="/images/g4.jpg" data-lightbox="example-set" data-title="Lorem Ipsum is simply dummy the when an unknown galley of type and scrambled it to make a type specimen.">
+                                <img src="/images/g4.jpg" class="img-responsive zoom-img" alt="" />
+                                <div class="view-caption">
+                                    <h5>Latest Gallery</h5>
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-4 gallery-grids">
+                        <div class="w3ls-hover">
+                            <a href="/images/g5.jpg" data-lightbox="example-set" data-title="Lorem Ipsum is simply dummy the when an unknown galley of type and scrambled it to make a type specimen.">
+                                <img src="/images/g5.jpg" class="img-responsive zoom-img" alt="" />
+                                <div class="view-caption">
+                                    <h5>Latest Gallery</h5>
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-4 gallery-grids">
+                        <div class="w3ls-hover">
+                            <a href="/images/g6.jpg" data-lightbox="example-set" data-title="Lorem Ipsum is simply dummy the when an unknown galley of type and scrambled it to make a type specimen.">
+                                <img src="/images/g6.jpg" class="img-responsive zoom-img" alt="" />
+                                <div class="view-caption">
+                                    <h5>Latest Gallery</h5>
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-4 gallery-grids">
+                        <div class="w3ls-hover">
+                            <a href="/images/g7.jpg" data-lightbox="example-set" data-title="Lorem Ipsum is simply dummy the when an unknown galley of type and scrambled it to make a type specimen.">
+                                <img src="/images/g7.jpg" class="img-responsive zoom-img" alt="" />
+                                <div class="view-caption">
+                                    <h5>Latest Gallery</h5>
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-4 gallery-grids">
+                        <div class="w3ls-hover">
+                            <a href="/images/g8.jpg" data-lightbox="example-set" data-title="Lorem Ipsum is simply dummy the when an unknown galley of type and scrambled it to make a type specimen.">
+                                <img src="/images/g8.jpg" class="img-responsive zoom-img" alt="" />
+                                <div class="view-caption">
+                                    <h5>Latest Gallery</h5>
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <!--  light box js -->
+
+
+                <script src="~/Dist/Web/js/lightbox-plus-jquery.min.js"></script>
+                <!-- //light box js-->
+            </div>
+        </div>
+        <!-- //gallery -->
+        <!-- services section -->
+        <div class="jarallax w3ls-section w3_agileits-services" id="services">
+            <div class="demo">
+                <div class="container">
+                    <div class="w3-welcome">
+                        <h3 class="agileits-title">services</h3>
+                    </div>
+                    <div id="verticalTab">
+                        <ul class="resp-tabs-list">
+                            <li>
+                                <div class="tab1">
+                                    <h3>ware housing</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab1">
+                                    <h3>sea frieght</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab1">
+                                    <h3>roadway frieght</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab1">
+                                    <h3>air frieght</h3>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab1">
+                                    <h3>rail frieght</h3>
+                                </div>
+
+                            </li>
+                        </ul>
+                        <div class="resp-tabs-container">
+                            <div>
+                                <div class="col-md-8 tabs-right1">
+                                    <h6>We Deliver It At Your Convenient Time & Location</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit.</p>
+                                    <p class="agile-tab-txt">scelerisque commodo.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus.</p>
+                                    <div class="button">
+                                        <a href="#" data-toggle="modal" data-target="#myModal">Get More<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 tabs-right2">
+                                    <img src="/images/g1.jpg" class="img-responsive" alt="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div>
+                                <div class="col-md-8 tabs-right1">
+                                    <h6>We Deliver It At Your Convenient Time & Location</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit.</p>
+                                    <p class="agile-tab-txt">scelerisque commodo.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus.</p>
+                                    <div class="button">
+                                        <a href="#" data-toggle="modal" data-target="#myModal">Get More<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 tabs-right2">
+                                    <img src="/images/g8.jpg" class="img-responsive" alt="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div>
+                                <div class="col-md-8 tabs-right1">
+                                    <h6>We Deliver It At Your Convenient Time & Location</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit.</p>
+                                    <p class="agile-tab-txt">scelerisque commodo.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus.</p>
+                                    <div class="button">
+                                        <a href="#" data-toggle="modal" data-target="#myModal">Get More<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 tabs-right2">
+                                    <img src="/images/g7.jpg" class="img-responsive" alt="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div>
+                                <div class="col-md-8 tabs-right1">
+                                    <h6>We Deliver It At Your Convenient Time & Location</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit.</p>
+                                    <p class="agile-tab-txt">scelerisque commodo.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus.</p>
+                                    <div class="button">
+                                        <a href="#" data-toggle="modal" data-target="#myModal">Get More<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 tabs-right2">
+                                    <img src="/images/s1.jpg" class="img-responsive" alt="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div>
+                                <div class="col-md-8 tabs-right1">
+                                    <h6>We Deliver It At Your Convenient Time & Location</h6>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit.</p>
+                                    <p class="agile-tab-txt">scelerisque commodo.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus.</p>
+                                    <div class="button">
+                                        <a href="#" data-toggle="modal" data-target="#myModal">Get More<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 tabs-right2">
+                                    <img src="/images/g5.jpg" class="img-responsive" alt="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 30px; clear: both"></div>
+            </div>
+        </div>
+        <script src="~/Dist/Web/js/easy-responsive-tabs.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#horizontalTab').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion
+                    width: 'auto', //auto or any width like 600px
+                    fit: true,   // 100% fit in a container
+                    closed: 'accordion', // Start closed if in accordion view
+                    activate: function (event) { // Callback function if tab is switched
+                        var $tab = $(this);
+                        var $info = $('#tabInfo');
+                        var $name = $('span', $info);
+                        $name.text($tab.text());
+                        $info.show();
+                    }
+                });
+                $('#verticalTab').easyResponsiveTabs({
+                    type: 'vertical',
+                    width: 'auto',
+                    fit: true
+                });
+            });
+        </script>
+        <!-- //agents section -->
+        <!-- service-bootom-->
+        <div class="jarallax w3ls-section wthree-service-bottom">
+            <div class="container">
+                <h3 class="agileits-title">do you still have a question regarding our services?</h3>
+                <a href="#contact" class="scroll">contact us</a>
+            </div>
+        </div>
+        <!-- //service-bottom -->
+        <!-- team -->
+        <div class="jarallax w3ls-section team">
+            <div class="container">
+                <h3 class="agileits-title">Our Team</h3>
+                <div class="wthree_team_agileinfo">
+                    <div class="col-sm-3 col-xs-3 wthree_team_grid_left">
+                        <figure class="effect-julia">
+                            <img src="/images/t1.jpg" alt=" " class="img-responsive" />
+                            <div class="w3l_banner_figure">
+                                <p>EDWARD</p>
+                                <p>
+                                    <a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+                                </p>
+                                <p>General Manager</p>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="col-sm-3 col-xs-3 wthree_team_grid_left">
+                        <figure class="effect-julia">
+                            <img src="/images/t2.jpg" alt=" " class="img-responsive" />
+                            <div class="w3l_banner_figure">
+                                <p>LAURA</p>
+                                <p>
+                                    <a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+                                </p>
+                                <p>Logistics Trainer</p>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="col-sm-3 col-xs-3 wthree_team_grid_left">
+                        <figure class="effect-julia">
+                            <img src="/images/t3.jpg" alt=" " class="img-responsive" />
+                            <div class="w3l_banner_figure">
+                                <p>Michael</p>
+                                <p>
+                                    <a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+                                </p>
+                                <p> Operations Manager</p>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="col-sm-3 col-xs-3 wthree_team_grid_left">
+                        <figure class="effect-julia">
+                            <img src="/images/t4.jpg" alt=" " class="img-responsive" />
+                            <div class="w3l_banner_figure">
+                                <p>sophia</p>
+                                <p>
+                                    <a href="#" class="social-button twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" class="social-button facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" class="social-button google"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#" class="social-button dribbble"><i class="fa fa-dribbble"></i></a>
+                                </p>
+                                <p>Service Executive</p>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <!-- //team -->
+        <!-- testimonals section -->
+        <div class="jarallax w3ls-section testimonials" id="testimonials">
+            <div class="container">
+                <h3 class="agileits-title">Testimonials</h3>
+                <div class="col-md-6 col-sm-6  w3ls-testi-left">
+                    <img src="/images/2.jpg" class="img-responsive" alt="" />
+                </div>
+                <div class="col-md-6 col-sm-6 box agileits-feedback-grids">
+                    <div class="scroll">
+                        <div class="testimonal grid-1">
+                            <p><i class="fa fa-quote-right" aria-hidden="true"></i>Cras tortor ipsum, gravida vitae finibus non, bibendum quis turpis. Cras semper accumsan metus, et aliquet diam vestibulum ut. </p>
+                            <h3 class="agile-testi-right"> Hoskins</h3>
+                        </div>
+                        <div class="testimonal grid-1">
+                            <p><i class="fa fa-quote-right" aria-hidden="true"></i>Cras tortor ipsum, gravida vitae finibus non, bibendum quis turpis. Cras semper accumsan metus, et aliquet diam vestibulum ut. </p>
+                            <h3 class="agile-testi-right"> Federeka</h3>
+                        </div>
+                        <div class="testimonal grid-1">
+                            <p><i class="fa fa-quote-right" aria-hidden="true"></i>Cras tortor ipsum, gravida vitae finibus non, bibendum quis turpis. Cras semper accumsan metus, et aliquet diam vestibulum ut. </p>
+                            <h3 class="agile-testi-right"> Daniel</h3>
+                        </div>
+                        <div class="testimonal grid-1">
+                            <p><i class="fa fa-quote-right" aria-hidden="true"></i>Cras tortor ipsum, gravida vitae finibus non, bibendum quis turpis. Cras semper accumsan metus, et aliquet diam vestibulum ut. </p>
+                            <h3 class="agile-testi-right"> Tammy</h3>
+                        </div>
+                        <div class="testimonal grid-1">
+                            <p><i class="fa fa-quote-right" aria-hidden="true"></i>Cras tortor ipsum, gravida vitae finibus non, bibendum quis turpis. Cras semper accumsan metus, et aliquet diam vestibulum ut. </p>
+                            <h3 class="agile-testi-right"> Roland</h3>
+                        </div>
+                        <div class="testimonal grid-1">
+                            <p><i class="fa fa-quote-right" aria-hidden="true"></i>Cras tortor ipsum, gravida vitae finibus non, bibendum quis turpis. Cras semper accumsan metus, et aliquet diam vestibulum ut. </p>
+                            <h3 class="agile-testi-right"> Maxwell</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //Testimonial section -->
+        <!-- subscribe -->
+        <div class="jarallax w3ls-section wthree-sub subscribe">
+            <div class="container">
+                <h3 class="agileits-title">Subscribe<span> For Tips & Offers</span></h3>
+                <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Enter your Email..." required="">
+                    <input type="submit" value="Subscribe">
+                    <div class="clearfix"> </div>
+                </form>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt lorem sed velit lacus ornare <a href="#">Privacy policy.</a></p>
+            </div>
+        </div>
+        <!-- //subscribe -->
+        <!-- contact -->
+        <div class="jarallax w3ls-section contact" id="contact">
+            <div class="container">
+                <h3 class="agileits-title">Contact Us</h3>
+                <div class="contact-form">
+                    <div class="col-md-7 contact-right">
+                        <h5>send us a message</h5>
+                        <p>Landitiis atque corrupti quos dolores et quas molestias excepturim </p>
+                        <form action="#" method="post">
+                            <input type="text" name="Name" placeholder="Name" required="">
+                            <input type="email" class="email" name="Email" placeholder="Email" required="">
+                            <textarea name="Message" placeholder="Message" required=""></textarea>
+                            <input type="submit" value="SUBMIT">
+                        </form>
+                    </div>
+                    <div class="col-md-5 contact-left">
+                        <div class="address">
+                            <h5>Address:</h5>
+                            <p><i class="glyphicon glyphicon-home"></i> 333 Broome St New York, NY 10002, </p>
+                        </div>
+                        <div class="address address-mdl">
+                            <h5>Phone:</h5>
+                            <p><i class="glyphicon glyphicon-earphone"></i> +9900887766</p>
+                            <p><i class="glyphicon glyphicon-phone"></i> +11 222 333</p>
+                        </div>
+                        <div class="address">
+                            <h5>Email:</h5>
+                            <p><i class="glyphicon glyphicon-envelope"></i> <a href="mailto:info@example.com">mail@example.com</a></p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="agileits-w3layouts-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15606.554946133958!2d-77.037965!3d-12.068359!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe3e8cbd5cacccbe!2sDCG+TEC+SAC!5e0!3m2!1ses-419!2spe!4v1505001708691" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <!-- //contact -->
+        <div class="w3_agile-copyright text-center">
+            <p>© 2017 custom. All rights reserved | Design by <a href="//w3layouts.com/">W3layouts</a></p>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3>Custom</h3>
+                        <img src="/images/logo.jpg" alt="construct" class="img-responsive" />
+                        <span>Lorem ipsum dolor sit amet, Sed ut perspiciatis unde omnis iste natus error sit voluptatem , eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.accusantium doloremque laudantium, totam rem aperiamconsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-dialog">
+                    <div class="modal-content login-modal">
+                        <div class="modal-header login-modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title text-center" id="loginModalLabel">AUTENTIFICACION DEL USUARIO</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <div role="tabpanel" class="login-tab">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a id="signin-taba" href="#Login" aria-controls="profile" role="tab" data-toggle="tab">INICIAR SESION</a></li>
+                                        <li role="presentation"><a id="signup-taba" href="#Persona" aria-controls="profile" role="tab" data-toggle="tab">REGISTRARSE</a></li>
+                                        <li role="presentation"><a id="forgetpass-taba" href="#forget_password" aria-controls="forget_password" role="tab" data-toggle="tab">RECURAR CONTRASEÑA</a></li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane active text-center" id="Login" data-url-login="@Url.Action("Login","Account")">
+                                            &nbsp;&nbsp;
+                                            <span id="login_fail" class="response_error" style="display: none;">Loggin failed, please try again.</span>
+                                            <div class="clearfix"></div>
+                                            <form>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                        <input type="text" class="form-control" name="usurio" id="usurio" placeholder="Username">
+                                                    </div>
+                                                    <span class="help-block has-error" id="email-error"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                        <input type="password" class="form-control" name="clave" id="clave" placeholder="Password">
+                                                    </div>
+                                                    <span class="help-block has-error" id="password-error"></span>
+                                                </div>
+                                                <button type="button" name="btnIniciarSesion" id="btnIniciarSesion" class="btn btn-block bt-login" data-loading-text="Signing In....">Login</button>
+                                                <div class="clearfix"></div>
+                                                <div class="login-modal-footer">
+
+                                                </div>
+                                                @Html.AntiForgeryToken()
+                                            </form>
+                                        </div>
+                                        <div role="tabpanel"  class="tab-pane" id="Persona" data-url-register="@Url.Action("Registrar", "Persona")" data-url-delete="@Url.Action("Delete", "Persona")">
+                                            &nbsp;&nbsp;
+                                            <span id="registration_fail" class="response_error" style="display: none;">Registration failed, please try again.</span>
+                                            <div class="clearfix"></div>
+                                            <form id="frmPersonaRegistrar">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Username">
+                                                    </div>
+                                                    <span class="help-block has-error" data-error="0" id="username-error"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-at"></i></div>
+                                                        <input type="text" class="form-control" name="correo" id="correo" placeholder="Email">
+                                                    </div>
+                                                    <span class="help-block has-error" data-error="0" id="remail-error"></span>
+                                                </div>
+                                                <button type="button" name="btnRegistrarCliente" id="btnRegistrarCliente" class="btn btn-block bt-login" data-loading-text="Registering....">REGISTRAME</button>
+                                                <div class="clearfix"></div>
+                                                <div class="login-modal-footer">
+
+                                                </div>
+                                           
+                                            </form>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane text-center" id="forget_password">
+                                            &nbsp;&nbsp;
+                                            <span id="reset_fail" class="response_error" style="display: none;"></span>
+                                            <div class="clearfix"></div>
+                                            <form>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                        <input type="text" class="form-control" id="femail" placeholder="Email">
+                                                    </div>
+                                                    <span class="help-block has-error" data-error="0" id="femail-error"></span>
+                                                </div>
+
+                                                <button type="button" id="reset_btn" class="btn btn-block bt-login" data-loading-text="Please wait....">RECUPERAR CONTRASEÑA</button>
+                                                <div class="clearfix"></div>
+                                                <div class="login-modal-footer">
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- //Modal -->
+        <script src="~/Dist/Web/js/jarallax.js"></script>
+        <script src="~/Dist/Web/js/SmoothScroll.min.js"></script>
+        <script src="~/Dist/Web/js/index.js"></script>
+        <script type="text/javascript">
+            /* init Jarallax */
+            $('.jarallax').jarallax({
+                speed: 0.5,
+                imgWidth: 1366,
+                imgHeight: 768
+            })
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                /*
+                    var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear'
+                    };
+                */
+
+                $().UItoTop({ easingType: 'easeOutQuart' });
+
+            });
+        </script>
+
+        <!-- start-smoth-scrolling -->
+
+
+        <script src="~/Dist/Web/js/easing.js"></script>
+        <script src="~/Dist/Web/js/move-top.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+                });
+            });
+        </script>
+        <!-- /ends-smoth-scrolling -->
+        <!-- //here ends scrolling icon -->
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="~/Dist/Web/js/bootstrap.js"></script>
+    <script src="~/Dist/App/Js/Script.js"></script>
+    <script src="~/Dist/Web/js/jquery.form.min.js"></script>
+    <script src="~/Dist/Generics/js/sweetalert2.js"></script>
+    <script>
+        DCG.Login.Init();
+        DCG.Persona.Init();
+    </script>
+    <script>
+        var usu = $("#usuario").val();
+     
+        $("#frm-adjuntar input").keydown(function () {
+            if (usu == null || usu == "") {
+                swal({
+                    title: 'DESEA INICIAR SESION?',
+                    text: "PRIMERO DEBES INICIAR SESION PARA GENERAR SU TICKET!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'SI, Inicar sesion!'
+                }).then(function () {
+                    $('#loginModal').modal('show')
+                })
+            }
+            }).keyup();
+        
+   
+        $("#frm-adjuntar").submit(function () {
+        
+            var form = $(this);
+
+            form.ajaxSubmit({
+                dataType: 'JSON',
+                type: 'POST',
+                url: form.attr('action'),
+                success: function (r) {
+                    if (r.status=="SUCCESS") {
+                        swal(
+                        'EXITO!',
+                        r.message,
+                        'success'
+                      );
+                        $("#frm-adjuntar")[0].reset();
+                    }
+                    else {
+                      swal(
+                       'Oops...',
+                       r.message,
+                       'error'
+                       );
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+
+            return false;
+        });
+    </script>
+
+    <script src="~/Dist/Generics/js/ajax.js"></script>
+    <script src="~/Dist/Generics/js/simpledataTable.js"></script>
+</body>
+</html>
+

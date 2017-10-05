@@ -1,0 +1,220 @@
+﻿@{
+    ViewBag.Title = "Compra";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+@section footer{
+    <script>
+        DCG.Compra.Init();
+    </script>
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-5">
+                        <div class="card card-user">
+                            <div class="image"><img src="static/img/background.jpg" alt="..."></div> <div class="content">
+                                <div class="author">
+                                    <img src="static/img/faces/face-2.jpg" alt="..." class="avatar border-white"> <h4 class="title">
+                                        Chet Faker
+                                        <br> <a href="#"><small>dddd</small></a>
+                                    </h4>
+                                </div> <p class="description text-center">
+                                    "I like the way you work it
+                                    <br> No diggity
+                                    <br> I wanna bag it up"
+                                </p>
+                            </div> <hr> <div class="text-center">
+                                <div class="row">
+                                    <div class="col-md-3 col-md-offset-1">
+                                        <h5>
+                                            12
+                                            <br> <small>Files</small>
+                                        </h5>
+                                    </div><div class="col-md-3">
+                                        <h5>
+                                            2GB
+                                            <br> <small>Used</small>
+                                        </h5>
+                                    </div><div class="col-md-4">
+                                        <h5>
+                                            24,6$
+                                            <br> <small>Spent</small>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <div class="card">
+                            <div class="header"><h4 class="title">Team members</h4></div> <div class="content">
+                                <ul class="list-unstyled team-members">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-xs-3"><div class="avatar"><img src="static/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive"></div></div> <div class="col-xs-6">
+                                                Dj Khaled
+                                                <br> <span class="text-muted"><small>Offline</small></span>
+                                            </div> <div class="col-xs-3 text-right"><button class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></button></div>
+                                        </div><div class="row">
+                                            <div class="col-xs-3"><div class="avatar"><img src="static/img/faces/face-1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive"></div></div> <div class="col-xs-6">
+                                                Creative Tim
+                                                <br> <span class="text-success"><small>Available</small></span>
+                                            </div> <div class="col-xs-3 text-right"><button class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></button></div>
+                                        </div><div class="row">
+                                            <div class="col-xs-3"><div class="avatar"><img src="static/img/faces/face-1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive"></div></div> <div class="col-xs-6">
+                                                Flume
+                                                <br> <span class="text-danger"><small>Busy</small></span>
+                                            </div> <div class="col-xs-3 text-right"><button class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></button></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> <div class="col-lg-8 col-md-7">
+                        <div class="card">
+                            <div class="header"><div style="text-align:center"><h4 class="title">Edit Profile</h4></div></div> <div class="content">
+                                <form>
+                                    <div class="row">
+                                        <form id="frmPersona">
+                                            <div class="portlet-body padding1">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label>Rol</label>
+                                                            <select name="rol" class="form-control">
+                                                                <option value="Administrador">Administrador</option>
+                                                                <option value="SISTEMAS">SISTEMAS</option>
+                                                                <option value="Soporte">Soporte</option>
+                                                                <option value="Ventas">Ventas</option>
+                                                                <option value="Administracion">Administracion</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label>Nombre</label>
+                                                            <input type="text" placeholder="Nombre" name="nombre" class="form-control" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label>Apellido Paterno</label>
+                                                            <input type="text" placeholder="Ap. Paterno" name="paterno" class="form-control" required="">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label>Apellido Materno</label>
+                                                            <input type="text" placeholder="Ap. Materno" name="materno" class="form-control" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label>Direccion</label>
+                                                            <input type="text" placeholder="direccion" name="direccion" class="form-control" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label>Telefono</label>
+                                                            <input type="text" placeholder="Telefono" name="telefono" class="form-control" required="">
+                                                        </div>
+
+                                                        <div class="col-sm-6">
+                                                            <label>Email</label>
+                                                            <input type="text" placeholder="ejemplo@domino.com" name="email" class="form-control" required="">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label>Fecha de Nacimiento</label>
+                                                            <input type="text" placeholder="Fecha nacimiento" name="fechanac" class="form-control" required="">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <label>Usuario</label>
+                                                            <input class="form-control" type="text" name="usuario" required="" placeholder="Digite usuario">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label>Foto</label>
+                                                            <input type="file" name="img_tmp" class="form-control">
+                                                            <input type="hidden" name="img" value="">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="detallePersona" style="display:none">
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <label>RUC</label>
+                                                                <input type="text" placeholder="Ruc" name="ruc" class="form-control" required="">
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <label>DNI</label>
+                                                                <input type="text" placeholder="Dni" name="dni" class="form-control" required="">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <label>Razón social</label>
+                                                                <input class="form-control" type="text" name="razon" required="" placeholder="Digite usuario">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <label>Dirección fiscal</label>
+                                                                <input class="form-control" type="text" name="fiscal" required="" placeholder="Digite usuario">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <input type="hidden" name="id" value="0">
+                                            </div>
+                                        </form>
+                                    
+                                    <button type="submit" class="btn btn-info btn-fill btn-wd">
+                                            Update Profile
+                                        </button>
+                                    </div> <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ 

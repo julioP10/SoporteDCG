@@ -1,0 +1,227 @@
+﻿
+@{
+    ViewBag.Title = "Marca";
+    Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+@section footer{
+    <script>
+        DCG.Mensajes.Init();
+</script>
+}
+<link href="~/Dist/Web/chats.css" rel="stylesheet" />
+
+<script src="~/Dist/Web/js/jquery.nicescroll.min.js"></script>
+
+        <div class="chat_container">
+            <div class="col-sm-3 chat_sidebar">
+                <div class="row">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" id="filter" class="search-query form-control" placeholder="BUSCAR" />
+                            <button class="btn btn-danger" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                            <span id="filter-count" class="success"></span>
+                        </div>
+                    </div>
+                    <div class="dropdown all_conversation">
+                        <button class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-weixin" aria-hidden="true"></i>
+                            All Conversations
+                            <span class="caret pull-right"></span>
+                        </button>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li>
+                                <a href="#"> All Conversation </a>  <ul class="sub_menu_ list-unstyled">
+                                    <li><a href="#"> All Conversation </a> </li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+
+                    </div>
+                    <div id="conten" class="member_list chatsss">
+                        <ul class="list-unstyled" id="usuarios">
+                            
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--chat_sidebar-->
+
+
+            <div class="col-sm-9 message_section">
+                <div class="row">
+                    <div class="new_message_head">
+                        <div class="pull-left"><button><i style="color:#1fc228" class="fa fa-user-circle fa-stack-2x">  @User.Identity.Name</i></button></div>
+                    <div class="pull-right">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-cogs" aria-hidden="true"></i>  Setting
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="#">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                      
+                    </div><!--new_message_head-->
+            
+                    <div class="chat_area chatsss">
+                        <hr style="border-top: 3px double #8c8b8b;" />
+                        <div class="tab-content" id="contentTicket">
+                              
+                             
+
+                        </div>
+                    </div><!--chat_area-->
+                    <div class="message_write">
+                        <textarea style="border-color: #1fc228;" class="form-control" placeholder="type a message"></textarea>
+                        <div class="clearfix"></div>
+                        <div class="chat_bottom">
+                            <form class="formulario">
+                                <div class="columna">
+                                    <label class="pull-left  btn btn-primary fa fa-cloud-upload" for="my-file-selector">
+                                        <input id="my-file-selector" type="file" style="display:none"
+                                               onchange="$('#upload-file-info').html(this.files[0].name)">
+                                        Agregar archivo
+                                    </label>
+                                    <span class='label label-info' id="upload-file-info"></span>
+                                </div>
+                                <div class="columna">
+                                    <select class="pull-left form-control col-lg-3">
+                                        <option>VISTO</option>
+                                        <option>AGENDADO</option>
+                                    </select>
+                                </div>
+                                <div class="columna">
+                                    <a href="#" id="enviar " class="pull-right btn btn-success users">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                        ENVIAR   ....
+                                    </a>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div> <!--message_section-->
+        </div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $(".chatsss").niceScroll();
+    });
+
+    $(".chat_area").animate({ scrollTop: $('.chat_area')[0].scrollHeight }, 4000);
+
+
+
+    $(document).ready(function () {
+
+        loadDataPersona();
+        $(document).on('change', ':file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+    });
+  
+
+    function loadDataPersona() {
+
+        $.ajax({
+            url: "/Persona/listarPersona",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: "{}",
+            success: function (result) {
+                var html = '';
+                var html2 = '';
+                $.each(result.data, function (key, item) {
+                    html += '<li  data-id="' + item.PERSI_CODIGO + '" class="left clearfix users "><form class="forms"><input name="codigo" val="' + item.PERSI_CODIGO + '" type="hidden"></form>  <a data-toggle="tab"  href="#">';
+                    html += '<span class="chat-img pull-left"><img src="" alt="User Avatar" class="img-circle"></span>';
+                    html += ' <div class="chat-body clearfix">';
+                    html += '<div class="header_sec">';
+                    html += '<strong class="primary-font">' + item.PERSV_NOMBRE + '</strong> <strong class="pull-right"> 09:45AM </strong></div>';
+                    html += '  <div class="contact_sec"><strong class="primary-font">' + item.RoleName + '</strong> <span style="background-color:#8BC34A" class="badge pull-right">3</span></div>';
+                    html += ' </div></a></li>';
+
+                    html2 += '<div id="' + item.PERSI_CODIGO + '" class="tab-pane fade ">';
+                    html2 += '<ul class="chat2">';
+                    //html2 += '<li  class="left clearfix " style="background: rgba(247, 208, 127, 0.61);">';
+                    //html2 += '<a  data-id="' + item.PERSI_CODIGO + '" id="' + item.PERSI_CODIGO + '" class="usuarioid"  href="#">';
+                    //html2 += '</a>';
+                    //html2 += '</li>';
+                    html2 += '</ul>';
+                    html2 += ' </div>';
+                });
+
+                $('#usuarios').html(html);
+                $('#contentTicket').html(html2);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    };
+
+           
+  
+</script> 
+<script>
+    $("body").on("click", "li.users", function (event) {
+        debugger;
+        var codigo = $(this).data("id");
+        var nombre="";
+        $(this).serialize();
+        var url = "@Url.Action("listar", "Ticket", new { codigo="codigoid"})";
+        url = url.replace("codigoid", codigo);
+        $.ajax({
+            url:url,
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            data: '{}',
+            success: function (result) {
+                debugger;
+                var html = '';
+                $.each(result.data, function (key, item) {
+                    debugger;
+                    html += '<ul class="chat2">';
+                    html += '<li class="left clearfix" style="background: rgba(247, 208, 127, 0.61);">';
+                    html += '<div class="chat-body clearfix ">';
+                    html += '    <div class="header">';
+                    html += '     <strong class="primary-font">'+item.TICK_CODIGO+'</strong> <small class="pull-right text-muted">';
+                    html += '        <span class="glyphicon glyphicon-time"></span>'+item.TICK_FECHA+'';
+                    html += '           </small>';
+                    html += '            </div>';
+                    html += '            <p>' + item.TICK_DESCRIPCION + ' </p>'
+                    html += '      </div>';
+                    html += '</li>';
+                    html += '</ul>';
+
+                });
+
+                $('#contentTicket').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    });
+</script>
